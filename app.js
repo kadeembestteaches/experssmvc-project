@@ -2,6 +2,8 @@ const express = require("express");
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 
+const productModel = require("./models/products");
+
 const app =express();
 
 
@@ -29,8 +31,11 @@ app.get("/contact-us",(req,res)=>{
 
 app.get("/products",(req,res)=>{
 
+
+    
     res.render("products",{
-        title:"Products Page"
+        title:"Products Page",
+        allProducts :productModel.getAllProducts()
     })
 });
 
